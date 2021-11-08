@@ -3,7 +3,7 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
-import sys, argparse, statistics
+import sys, argparse
 
 parser = argparse.ArgumentParser(description='Make a CDF graph from data in the external file')
 parser.add_argument('datafiles', type=str, nargs='+', help='File containing data')
@@ -45,10 +45,11 @@ for i, datafile in enumerate(args.datafiles):
 
     # Print data characteristic
     print("data: " + str(datafile))
-    print("- avg  : " + str(sum(data)/len(data)))
-    print("- max  : " + str(data[len(data)-1]))
-    print("- min  : " + str(data[0]))
-    print("- stdv : " + str(statistics.stdev(data)))
+    print("- avg  : " + str(np.average(data)))
+    print("- mdn  : " + str(np.median(data)))
+    print("- max  : " + str(np.max(data)))
+    print("- min  : " + str(np.min(data)))
+    print("- stdv : " + str(np.std(data)))
 
     # Plot the cdf
     if len(labels) > 0:
